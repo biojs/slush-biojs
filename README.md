@@ -1,5 +1,7 @@
 # Slush BioJS 
 
+[![NPM version][npm-image]][npm-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Dev. Dependency Status][daviddm-dev-image]][daviddm-dev-url]
+
 > A [slush](https://slushjs.github.io/) generator for BioJS packages.
 
 
@@ -34,3 +36,11 @@ cd my-module && slush biojs
 ```
 
 Enjoy.
+
+
+[npm-url]: https://npmjs.org/package/slush-biojs
+[npm-image]: https://badge.fury.io/js/slush-biojs.svg
+[daviddm-url]: https://david-dm.org/biojs/slush-biojs
+[daviddm-image]: https://david-dm.org/biojs/slush-biojs.svg?theme=shields.io
+[daviddm-dev-url]: https://david-dm.org/biojs/slush-biojs#info=devDependencies
+[daviddm-dev-image]: https://david-dm.org/biojs/slush-biojs/dev-status.svg?theme=shields.io
