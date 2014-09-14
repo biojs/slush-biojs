@@ -1,6 +1,6 @@
 # Slush BioJS 
 
-> A [slush](http://klei.github.io/slush) generator for BioJS packages.
+> A [slush](https://slushjs.github.io/) generator for BioJS packages.
 
 
 ## Getting Started
