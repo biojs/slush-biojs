@@ -1,0 +1,44 @@
+{
+    "name": "slush-biojs",
+    "version": "0.0.1",
+    "description": "A slush generator for BioJS modules",
+    "keywords": [
+        "slushgenerator",
+        "node",
+        "npm",
+        "module"
+    ],
+    "homepage": "https://github.com/biojs/slush-biojs",
+    "bugs": "https://github.com/biojs/slush-biojs/issues",
+    "author": {
+        "name": "BioJS",
+        "email": "biojs-technical@googlegroups.com",
+        "url": "https://github.com/biojs"
+    },
+    "licenses": [{
+        "type": "Apache 2",
+        "url": "https://github.com/biojs/slush-biojs/blob/master/LICENSE"
+    }],
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/biojs/slush-biojs.git"
+    },
+    "main": "slushfile.js",
+    "dependencies": {
+        "gulp": "~3.5.6",
+        "gulp-template": "~0.1.1",
+        "gulp-install": "~0.1.1",
+        "gulp-conflict": "~0.1.1",
+        "gulp-rename": "~1.2.0",
+        "underscore.string": "~2.3.3",
+        "inquirer": "~0.4.1"
+    },
+    "devDependencies": {
+        "mocha": "~1.14.0",
+        "chai": "~1.8.0"
+    },
+    "engines": {
+        "node": ">=0.10.26",
+        "npm": ">=1.4.3"
+    }
+}
