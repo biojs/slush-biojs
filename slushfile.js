@@ -15,26 +15,26 @@ var gulp = require('gulp'),
 gulp.task('default', function(done) {
     var prompts = [{
         name: 'appName',
-        message: 'What the module name?'
+        message: 'Module name?'
     }, {
         name: 'appDescription',
-        message: 'What the description?'
+        message: 'Description?'
     }, {
         name: 'appVersion',
-        message: 'What the module version?',
+        message: 'Module version?',
         default: '0.1.0'
     }, {
         name: 'authorName',
-        message: 'What the author name?',
+        message: 'Author name?',
     }, {
         name: 'authorEmail',
-        message: 'What the author email?',
+        message: 'Author email?',
     }, {
         name: 'userName',
-        message: 'What the github username?',
+        message: 'Github username?',
     }, {
         name: 'keywords',
-        message: 'Enter keywords for npm (separate with comma)',
+        message: 'Keywords for npm (separate with comma)',
     }, {
         type: 'list',
         name: 'license',
