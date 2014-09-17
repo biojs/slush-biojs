@@ -26,7 +26,7 @@
     "build-browser": "mkdirp build; browserify browser.js -o build/<%= appNameSlug %>.js",
 	"build-browser-min": "gulp build-browser-gzip",
 	"prepublish": "gulp",
-    "watch": "mkdirp build; watchify browser.js -o build/<%= appNameSlug %>.js"
+    "watch": "mkdirp build; watchify browser.js -o build/<%= appNameSlug %>.js -v"
   },
   "dependencies": {},
   "devDependencies": {
