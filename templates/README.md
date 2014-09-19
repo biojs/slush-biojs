@@ -1,6 +1,7 @@
 # <%= appName %>
 
 [![Build Status](https://secure.travis-ci.org/<%= userName %>/<%= appNameSlug %>.png?branch=master)](http://travis-ci.org/<%= userName %>/<%= appNameSlug %>)
+[![Coverage Status](https://img.shields.io/coveralls/<%= userName %>/<%= appNameSlug %>.svg)](https://coveralls.io/r/<%= userName %>/<%= appNameSlug %>)
 [![NPM version](https://badge-me.herokuapp.com/api/npm/<%= appNameSlug %>.png)](http://badges.enytc.com/for/npm/<%= appNameSlug %>) 
 
 > <%= appDescription %>

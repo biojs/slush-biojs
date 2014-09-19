@@ -12,6 +12,7 @@ var mocha = require('gulp-mocha');
 var watch = require('gulp-watch');
 var uglify = require('gulp-uglify');
 var browserify = require('gulp-browserify');
+var coveralls = require('gulp-coveralls');
 
 // gulp helper
 var gzip = require('gulp-gzip');
@@ -36,7 +37,7 @@ var outputFileMinSt = outputFile + ".min.js";
 var outputFileMin = join(buildDir,outputFileMinSt);
 
 // a failing test breaks the whole build chain
-gulp.task('default', ['lint', 'test', 'build-browser', 'build-browser-gzip']);
+gulp.task('default', ['lint', 'test', 'coveralls', 'build-browser', 'build-browser-gzip']);
 
 gulp.task('lint', function() {
   return gulp.src('./lib/*.js')
@@ -49,6 +50,11 @@ gulp.task('test', function () {
     return gulp.src('./test/**/*.js', {read: false})
         .pipe(mocha({reporter: 'spec',
                     useColors: false}));
+});
+
+gulp.task('coveralls', function () {
+    return gulp.src('coverage/lcov.info')
+	.pipe(coveralls());
 });
 
 gulp.task('watch', function() {

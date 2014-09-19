@@ -3,3 +3,5 @@ node_modules
 *.log
 .DS_Store
 build
+coverage/lcov.info
+.coveralls.yml
