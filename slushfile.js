@@ -68,11 +68,19 @@ gulp.task('default', function(done) {
                 files.push('!' + __dirname + '/templates/LICENSE_APACHE2');
             }
             answers.keywords = answers.keywords.split(",");
+            // toLower
+            answers.keywords = answers.keywords.join('|').toLowerCase().split('|');
+
             // no keywords entered
             if (answers.keywords.length === 1 && answers.keywords[0].length === 0){
               answers.keywords = [];
             }
+            // ensure that the package has a biojs keyword
+            if(!("biojs" in answers.keywords)){
+              answers.keywords.push("biojs");
+            }
             answers.keywordList = JSON.stringify(answers.keywords);
+
             gulp.src(files)
                 .pipe(template(answers))
                 .pipe(rename(function(file) {
