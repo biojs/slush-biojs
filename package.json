@@ -6,6 +6,7 @@
         "slushgenerator",
         "node",
         "npm",
+        "biojs",
         "module"
     ],
     "homepage": "https://github.com/biojs/slush-biojs",
