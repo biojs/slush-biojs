@@ -46,6 +46,10 @@ gulp.task('default', function(done) {
     inquirer.prompt(prompts,
         function(answers) {
             if (!answers.appName) {
+              // empty space so that everyone can see this error msg
+                console.log();
+                console.warn("WARNING: you must enter a package name. try it again ;-)");
+                console.log();
                 return done();
             }
             answers.appNameSlug = str.slugify(answers.appName)
