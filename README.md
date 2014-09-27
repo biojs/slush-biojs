@@ -35,8 +35,53 @@ Run the generator from within the new folder:
 cd my-module && slush biojs
 ```
 
-Enjoy.
 
+How to use
+-----------
+
+### 1. Test
+
+```
+gulp test
+```
+
+Non-DOM `gulp test-unit` (folder: `test/unit`)
+DOM-only `gulp test-dom` (folder: `test/dom`)
+
+The Unit tests are run with PhantomJS, if you want to debug them open the `test/index.html` 
+your browser.
+
+You need to add your _DOM_ tests to the `test/dom/index.js`.
+
+### 2. Snippets
+
+Allows you to write minimal example snippets.
+These snippets will be used for the BioJS registry.
+
+```
+npm run sniper
+```
+
+open http://localhost:9090/snippets
+
+### 3. Watchify
+
+Watches all your files and runs browserify on every change
+Combine this with the sniper.
+
+```
+npm run watch
+```
+
+### 4. Test watch
+
+Watches all your files and recompiles the tests.
+
+```
+gulp watch
+```
+
+Enjoy.
 
 [npm-url]: https://npmjs.org/package/slush-biojs
 [npm-image]: https://badge.fury.io/js/slush-biojs.svg

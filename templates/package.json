@@ -26,10 +26,12 @@
     "build-browser": "mkdirp build; browserify browser.js -o build/<%= appNameSlug %>.js",
 	"build-browser-min": "gulp build-browser-gzip",
 	"prepublish": "gulp",
+	"sniper": "./node_modules/biojs-sniper/bin/sniper .",
     "watch": "mkdirp build; watchify browser.js -o build/<%= appNameSlug %>.js -v"
   },
   "dependencies": {},
-  "devDependencies": {
+  "devDependencies": {<% if (vis){ %>
+	"biojs-sniper": "^0.0.4", <% } %>
     "blanket": "^1.1.6",
     "browserify": "~4.2.0",
     "chai": "^1.9.1",
@@ -62,5 +64,16 @@
       "threshold": 60
     }
   },
+  "shields": {
+    "test": {
+      "img": "https://travis-ci.org/<%= userName %>/<%= appNameSlug %>.svg?branch=master",
+      "href": "https://travis-ci.org/<%= userName %>/<%= appNameSlug %>"
+    }
+  }, <% if(vis){ %>
+  "sniper": {
+     "js": [ "/build/<%= appNameSlug %>.js"],
+     "snippets": ["snippets"],
+     "first": "simple_example"
+   }, <% } %>
   "keywords": <%= keywordList %>
 }

@@ -86,8 +86,9 @@ gulp.task('default', function(done) {
                 files.push('!' + __dirname + '/templates/LICENSE_APACHE2');
             }
             if (!answers.vis) {
-            files.push('!' + __dirname + '/test/index.html');
-            files.push('!' + __dirname + '/test/dom/**');
+              files.push('!' + __dirname + '/snippets/**');
+              files.push('!' + __dirname + '/test/index.html');
+              files.push('!' + __dirname + '/test/dom/**');
             }
             answers.keywords = answers.keywords.split(",");
             // toLower
