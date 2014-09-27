@@ -1,42 +1,44 @@
 {
-    "name": "slush-biojs",
-    "version": "0.1.0",
-    "description": "A slush generator for BioJS modules",
-    "keywords": [
-        "slushgenerator",
-        "node",
-        "npm",
-        "biojs",
-        "module"
-    ],
-    "homepage": "https://github.com/biojs/slush-biojs",
-    "bugs": "https://github.com/biojs/slush-biojs/issues",
-    "author": {
-        "name": "BioJS",
-        "email": "biojs-technical@googlegroups.com",
-        "url": "https://github.com/biojs"
-    },
-    "licenses": [{
-        "type": "Apache 2",
-        "url": "https://github.com/biojs/slush-biojs/blob/master/LICENSE"
-    }],
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/biojs/slush-biojs.git"
-    },
-    "main": "slushfile.js",
-    "dependencies": {
-        "gulp": "~3.8.8",
-        "gulp-template": "~1.1.0",
-        "gulp-install": "~0.2.0",
-        "gulp-conflict": "~0.2.0",
-        "gulp-rename": "~1.2.0",
-        "underscore.string": "~2.3.3",
-        "inquirer": "~0.7.1"
-    },
-    "devDependencies": {},
-    "engines": {
-        "node": ">=0.10.26",
-        "npm": ">=1.4.3"
+  "name": "slush-biojs",
+  "version": "0.2.0",
+  "description": "A slush generator for BioJS modules",
+  "keywords": [
+    "slushgenerator",
+    "node",
+    "npm",
+    "biojs",
+    "module"
+  ],
+  "homepage": "https://github.com/biojs/slush-biojs",
+  "bugs": "https://github.com/biojs/slush-biojs/issues",
+  "author": {
+    "name": "BioJS",
+    "email": "biojs-technical@googlegroups.com",
+    "url": "https://github.com/biojs"
+  },
+  "licenses": [
+    {
+      "type": "Apache 2",
+      "url": "https://github.com/biojs/slush-biojs/blob/master/LICENSE"
     }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/biojs/slush-biojs.git"
+  },
+  "main": "slushfile.js",
+  "dependencies": {
+    "gulp": "~3.8.8",
+    "gulp-conflict": "~0.2.0",
+    "gulp-install": "~0.2.0",
+    "gulp-rename": "~1.2.0",
+    "gulp-template": "~1.1.0",
+    "inquirer": "~0.7.1",
+    "underscore.string": "~2.3.3"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=0.10.26",
+    "npm": ">=1.4.3"
+  }
 }
