@@ -10,6 +10,13 @@
 @class <%= appNameVar %>
  */
 
+<% if (vis){ %>
+var  <%= appNameVar %>;
+module.exports = <%= appNameVar %> = function(opts){
+  this.el = opts.el;
+  this.el.textContent = <%= appNameVar %>.hello(opts.text);
+};<% } %>
+
 /**
  * Private Methods
  */
@@ -30,6 +37,11 @@
  * @return {String} Returns hello name
  */
 
+<% if (vis){ %>
+<%= appNameVar %>.hello = function (name) {
+<% }else{ %>
 module.exports.hello = function (name) {
+<% } %>
   return 'hello ' + name;
 };
+

@@ -13,6 +13,8 @@ var watch = require('gulp-watch');
 var uglify = require('gulp-uglify');
 var browserify = require('gulp-browserify');
 var coveralls = require('gulp-coveralls');
+<% if (vis){ %>
+var mochaPhantomJS = require('gulp-mocha-phantomjs'); <% } %>
 
 // gulp helper
 var gzip = require('gulp-gzip');
@@ -45,12 +47,34 @@ gulp.task('lint', function() {
     .pipe(jshint.reporter('default'));
 });
 
+<% if (vis){ %>
+gulp.task('test', ['test-unit', 'test-dom']);
+<% }else{ %>
+gulp.task('test', ['test-unit']);
+<% } %>
 
-gulp.task('test', function () {
-    return gulp.src('./test/**/*.js', {read: false})
+gulp.task('test-unit', function () {
+    return gulp.src('./test/unit/**/*.js', {read: false})
         .pipe(mocha({reporter: 'spec',
                     useColors: false}));
 });
+
+<% if (vis){ %>
+gulp.task('test-dom', ["build-test"], function () {
+  return gulp
+  .src('test/index.html')
+  .pipe(mochaPhantomJS());
+});
+
+// browserify debug
+gulp.task('build-test',['init'], function() {
+  return gulp.src("./test/dom/index.js")
+  .pipe(browserify({debug:true}))
+  .pipe(rename("test.js"))
+  .pipe(gulp.dest(buildDir));
+});
+
+<% } %>
 
 gulp.task('coveralls', function () {
     return gulp.src('coverage/lcov.info')

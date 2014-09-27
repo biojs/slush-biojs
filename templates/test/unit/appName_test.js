@@ -6,15 +6,27 @@
  * Licensed under the <%= license %> license.
  */
 
+// chai is an assertion library
 var chai = require('chai');
+
+// @see http://chaijs.com/api/assert/
+var assert = chai.assert;
+
+// register alternative styles
+// @see http://chaijs.com/api/bdd/
 chai.expect();
 chai.should();
 
-var <%= appNameVar %> = require('../lib/<%= appNameVar %>.js');
+// requires your main app (specified in index.js)
+var <%= appNameVar %> = require('../..');
 
 describe('<%= appNameSlug %> module', function(){
   describe('#hello()', function(){
     it('should return a hello', function(){
+
+      assert.equal(<%= appNameVar %>.hello('biojs'), ("hello biojs"));
+      
+      // alternative styles
       <%= appNameVar %>.hello('biojs').should.equal("hello biojs");
     });
   });

@@ -36,11 +36,21 @@ gulp.task('default', function(done) {
         name: 'keywords',
         message: 'Keywords for npm (separate with comma)',
     }, {
+      name: 'vis',
+      type: "confirm",
+      default: true,
+      message: 'A visualization lib?',
+    },{
         type: 'list',
         name: 'license',
         message: 'Choose your license type',
         choices: ['Apache 2','MIT', 'BSD'],
         default: 'Apache 2'
+    },{
+        type: 'confirm',
+        name: 'moveon',
+        default: true,
+        message: 'Is this correct?'
     }];
     //Ask
     inquirer.prompt(prompts,
@@ -52,6 +62,10 @@ gulp.task('default', function(done) {
                 console.log();
                 return done();
             }
+            if (!answers.moveon) {
+                return done();
+            }
+
             answers.appNameSlug = str.slugify(answers.appName)
             // some chars are not valid chars for a variable
             answers.appNameVar = answers.appNameSlug.split("-").join("");
@@ -70,6 +84,10 @@ gulp.task('default', function(done) {
             } else {
                 files.push('!' + __dirname + '/templates/LICENSE_MIT');
                 files.push('!' + __dirname + '/templates/LICENSE_APACHE2');
+            }
+            if (!answers.vis) {
+            files.push('!' + __dirname + '/test/index.html');
+            files.push('!' + __dirname + '/test/dom/**');
             }
             answers.keywords = answers.keywords.split(",");
             // toLower
