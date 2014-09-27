@@ -1,1 +1,0 @@
-<%= appNameVar %> = require('./index');
