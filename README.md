@@ -53,6 +53,12 @@ your browser.
 
 You need to add your _DOM_ tests to the `test/dom/index.js`.
 
+If you want to auto-execute all your test on a file change, run:
+
+```
+gulp test-watch
+```
+
 ### 2. Snippets
 
 Allows you to write minimal example snippets.
@@ -66,20 +72,14 @@ open http://localhost:9090/snippets
 
 ### 3. Watchify
 
-Watches all your files and runs browserify on every change
+Watches all your files and runs browserify on every change.
 Combine this with the sniper.
+(Subsequent runs of watchify are fast).
 
 ```
 npm run watch
 ```
 
-### 4. Test watch
-
-Watches all your files and recompiles the tests.
-
-```
-gulp watch
-```
 
 Enjoy.
 
