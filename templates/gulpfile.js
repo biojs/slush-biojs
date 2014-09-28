@@ -41,7 +41,7 @@ var mkdirp = require('mkdirp');
 var buildDir = "build";
 var packageConfig = require('./package.json');
 var outputFile = "<%= appNameVar %>";
-var outputFileMin = join(buildDir,outputFile + "min.js");
+var outputFileMin = join(buildDir,outputFile + ".min.js");
 
 // a failing test breaks the whole build chain
 gulp.task('build', ['build-browser', 'build-browser-gzip']);
@@ -111,7 +111,7 @@ gulp.task('init', ['clean'], function() {
 // browserify debug
 gulp.task('build-browser',['init'], function() {
   var b = browserify({debug: true,hasExports: true});
-  b.add('./index.js', {expose: packageConfig.name });
+  exposeBundles(b);
   return b.bundle()
     .pipe(source(outputFile + ".js"))
     .pipe(chmod(644))
@@ -121,7 +121,7 @@ gulp.task('build-browser',['init'], function() {
 // browserify min
 gulp.task('build-browser-min',['init'], function() {
   var b = browserify({hasExports: true, standalone: "<%= appNameSlug %>"});
-  b.add('./index.js', {expose: packageConfig.name });
+  exposeBundles(b);
   return b.bundle()
     .pipe(source(outputFile + ".min.js"))
     .pipe(chmod(644))
@@ -135,6 +135,17 @@ gulp.task('build-browser-gzip', ['build-browser-min'], function() {
     .pipe(rename(outputFile + ".min.gz.js"))
     .pipe(gulp.dest(buildDir));
 });
+
+// exposes the main package
+// + checks the config whether it should expose other packages
+function exposeBundles(b){
+  b.add('./index.js', {expose: packageConfig.name });
+  if(packageConfig.sniper !== undefined && packageConfig.sniper.exposed !== undefined){
+    for(var i=0; i<packageConfig.sniper.exposed.length; i++){
+      b.require(packageConfig.sniper.exposed[i]);
+    }
+  }
+}
 
 // watch task for browserify 
 // watchify has an internal cache -> subsequent builds are faster
