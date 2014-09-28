@@ -40,10 +40,7 @@ var mkdirp = require('mkdirp');
 // browserify build config
 var buildDir = "build";
 var packageConfig = require('./package.json');
-var outputFile = packageConfig.name;
-
-// auto config for browserify
-var outputFilePath = join(buildDir,outputFile + ".js");
+var outputFile = "<%= appNameVar %>";
 var outputFileMin = join(buildDir,outputFile + "min.js");
 
 // a failing test breaks the whole build chain
@@ -114,7 +111,7 @@ gulp.task('init', ['clean'], function() {
 // browserify debug
 gulp.task('build-browser',['init'], function() {
   var b = browserify({debug: true,hasExports: true});
-  b.add('./index.js', {expose: "<%= appNameSlug %>"});
+  b.add('./index.js', {expose: packageConfig.name });
   return b.bundle()
     .pipe(source(outputFile + ".js"))
     .pipe(chmod(644))
@@ -124,7 +121,7 @@ gulp.task('build-browser',['init'], function() {
 // browserify min
 gulp.task('build-browser-min',['init'], function() {
   var b = browserify({hasExports: true, standalone: "<%= appNameSlug %>"});
-  b.add('./index.js', {expose: "<%= appNameSlug %>"});
+  b.add('./index.js', {expose: packageConfig.name });
   return b.bundle()
     .pipe(source(outputFile + ".min.js"))
     .pipe(chmod(644))
@@ -145,7 +142,7 @@ gulp.task('watch', function() {
   var util = require('gulp-util')
 
   var b = browserify({debug: true,hasExports: true, cache: {}, packageCache: {} });
-  b.add('./index.js', {expose: "<%= appNameSlug %>"});
+  b.add('./index.js', {expose: packageConfig.name});
 
   function rebundle(ids){
     b.bundle()
