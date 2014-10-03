@@ -6,6 +6,12 @@
  * Licensed under the <%= license %> license.
  */
 
+
+// browserify build config
+var buildDir = "build";
+var outputFile = "<%= appNameVar %>";
+
+// packages
 var gulp   = require('gulp');
 
 // browser builds
@@ -37,11 +43,9 @@ var path = require('path');
 var join = path.join;
 var mkdirp = require('mkdirp');
 
-// browserify build config
-var buildDir = "build";
-var packageConfig = require('./package.json');
-var outputFile = "<%= appNameVar %>";
+// auto config
 var outputFileMin = join(buildDir,outputFile + ".min.js");
+var packageConfig = require('./package.json');
 
 // a failing test breaks the whole build chain
 gulp.task('build', ['build-browser', 'build-browser-gzip']);
