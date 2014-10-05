@@ -49,7 +49,8 @@ var packageConfig = require('./package.json');
 
 // a failing test breaks the whole build chain
 gulp.task('build', ['build-browser', 'build-browser-gzip']);
-gulp.task('default', ['lint', 'test', 'coveralls', 'build']);
+gulp.task('default', ['lint', 'test', <% if(coverage){ %>'coveralls',<% } %> 'build']);
+
 
 gulp.task('lint', function() {
   return gulp.src('./lib/*.js')
@@ -88,10 +89,12 @@ gulp.task('build-test',['init'], function() {
 
 <% } %>
 
+<% if (coverage){ %>
 gulp.task('coveralls', function () {
     return gulp.src('coverage/lcov.info')
 	.pipe(coveralls());
 });
+<% } %>
 
 gulp.task('test-watch', function() {
    gulp.watch(['./src/**/*.js','./lib/**/*.js', './test/**/*.js'], function() {

@@ -40,6 +40,11 @@ gulp.task('default', function(done) {
       type: "confirm",
       default: true,
       message: 'A visualization lib?',
+   }, {
+     name: 'coverage',
+     type: "confirm",
+     default: true,
+     message: 'Check code coverage?',
     },{
         type: 'list',
         name: 'license',
@@ -77,19 +82,28 @@ gulp.task('default', function(done) {
             var files = [__dirname + '/templates/**'];
             if (answers.license === 'MIT') {
                 files.push('!' + __dirname + '/templates/LICENSE_BSD');
-                files.push('!' + __dirname + '/templates/LICENSE_APACHE2');
+                files.push('!' + __dirname + '/templates/LICENSE_APACHE');
             }else if (answers.license === 'Apache 2') {
                 files.push('!' + __dirname + '/templates/LICENSE_BSD');
                 files.push('!' + __dirname + '/templates/LICENSE_MIT');
             } else {
                 files.push('!' + __dirname + '/templates/LICENSE_MIT');
-                files.push('!' + __dirname + '/templates/LICENSE_APACHE2');
+                files.push('!' + __dirname + '/templates/LICENSE_APACHE');
             }
+
             if (!answers.vis) {
               files.push('!' + __dirname + '/snippets/**');
               files.push('!' + __dirname + '/test/index.html');
               files.push('!' + __dirname + '/test/dom/**');
             }
+
+            //TODO
+            answers.coverage = false;
+
+            if (!answers.coverage) {
+              files.push('!' + __dirname + '/coverage/**');
+            }
+
             answers.keywords = answers.keywords.split(",");
             // toLower
             answers.keywords = answers.keywords.join('|').toLowerCase().split('|');

@@ -22,7 +22,7 @@
   ],
   "main": "lib/<%= appNameSlug %>",
   "scripts": {
-    "test": "mocha --require blanket --reporter mocha-lcov-reporter > coverage/lcov.info && gulp test && gulp coveralls",
+    "test": "gulp",
 	"build": "gulp build",
     "build-browser": "gulp build-browser",
 	"build-browser-min": "gulp build-browser-gzip",
