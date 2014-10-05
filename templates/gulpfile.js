@@ -31,7 +31,6 @@ var coveralls = require('gulp-coveralls');
 // gulp helper
 var source = require('vinyl-source-stream'); // converts node streams into vinyl streams
 var gzip = require('gulp-gzip');
-var clean = require('gulp-rimraf');
 var rename = require('gulp-rename');
 var chmod = require('gulp-chmod');
 var streamify = require('gulp-streamify'); // converts streams into buffers (legacy support for old plugins)
@@ -42,6 +41,7 @@ var fs = require('fs');
 var path = require('path');
 var join = path.join;
 var mkdirp = require('mkdirp');
+var del = require('del');
 
 // auto config
 var outputFileMin = join(buildDir,outputFile + ".min.js");
@@ -101,8 +101,8 @@ gulp.task('test-watch', function() {
 
 
 // will remove everything in build
-gulp.task('clean', function() {
-  return gulp.src(buildDir).pipe(clean());
+gulp.task('clean', function(cb) {
+  del([buildDir], cb);
 });
 
 // just makes sure that the build dir exists
