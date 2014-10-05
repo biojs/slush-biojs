@@ -25,8 +25,8 @@ var mocha = require('gulp-mocha');
 var mochaPhantomJS = require('gulp-mocha-phantomjs'); <% } %>
 
 // code style
-var jshint = require('gulp-jshint');
-var coveralls = require('gulp-coveralls');
+var jshint = require('gulp-jshint'); <% if (coverage){ %>
+var coveralls = require('gulp-coveralls'); <% } %>
 
 // gulp helper
 var source = require('vinyl-source-stream'); // converts node streams into vinyl streams
