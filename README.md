@@ -61,7 +61,7 @@ gulp test-watch
 
 ### 2. Snippets
 
-Allows you to write minimal example snippets.
+Allows you to write minimal example [snippets](https://github.com/biojs/biojs-sniper).
 These snippets will be used for the BioJS registry.
 
 ```
@@ -69,6 +69,7 @@ npm run sniper
 ```
 
 open http://localhost:9090/snippets
+
 
 ### 3. Watchify
 
