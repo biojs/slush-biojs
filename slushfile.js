@@ -110,32 +110,32 @@ gulp.task('default', function(done) {
             }
 
             if (!answers.vis) {
-              files.push('!' + __dirname + '/snippets/**');
-              files.push('!' + __dirname + '/test/index.html');
-              files.push('!' + __dirname + '/test/dom/**');
+              files.push('!' + __dirname + '/templates/{snippets,snippets/**}');
+              files.push('!' + __dirname + '/templates/test/index.html');
             }
 
             if(!(answers.vis && answers.tests)){
               answers.phantomjs = false;
             }
 
+            // only call phantomjs when we have vis + tests
             if (!answers.phantomjs) {
-              files.push('!' + __dirname + '/test/dom/**');
+              files.push('!' + __dirname + '/templates/test/{dom,dom/**}');
             }
 
             if (!answers.jshint) {
-              files.push('!' + __dirname + '/_jshintrc');
+              files.push('!' + __dirname + '/templates/_jshintrc');
             }
 
             if (!answers.tests) {
-              files.push('!' + __dirname + '/test/**');
+              files.push('!' + __dirname + '/templates/{test,test/**}');
             }
 
             //TODO
             answers.coverage = false;
 
             if (!answers.coverage) {
-              files.push('!' + __dirname + '/coverage/**');
+              files.push('!' + __dirname + '/templates/{coverage,coverage/**}');
             }
 
             answers.keywords = answers.keywords.split(",");

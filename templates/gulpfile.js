@@ -19,7 +19,7 @@ var browserify = require('browserify');
 var watchify = require('watchify')
 var uglify = require('gulp-uglify');
 
-<% if (jshint){ %>
+<% if (tests){ %>
 // testing
 var mocha = require('gulp-mocha'); <% if (vis && phantomjs){ %>
 var mochaPhantomJS = require('gulp-mocha-phantomjs'); <% } %>
@@ -62,7 +62,7 @@ gulp.task('lint', function() {
 <% } %>
 
 <% if (tests){ %>
-<% if (vis){ %>
+<% if (vis && phantomjs){ %>
 gulp.task('test', ['test-unit', 'test-dom']);
 <% }else{ %>
 gulp.task('test', ['test-unit']);
