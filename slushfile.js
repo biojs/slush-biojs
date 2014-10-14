@@ -127,6 +127,10 @@ gulp.task('default', function(done) {
               files.push('!' + __dirname + '/_jshintrc');
             }
 
+            if (!answers.tests) {
+              files.push('!' + __dirname + '/test/**');
+            }
+
             //TODO
             answers.coverage = false;
 
