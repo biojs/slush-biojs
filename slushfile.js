@@ -41,6 +41,24 @@ gulp.task('default', function(done) {
       default: true,
       message: 'A visualization lib?',
    }, {
+      name: 'tests',
+      type: "confirm",
+      default: true,
+      message: 'Unit tests',
+   }, {
+      name: 'phantomjs',
+      type: "confirm",
+      default: true,
+      message: 'UI tests with PhantomJS (headless browser)',
+      when: function(answers){
+        return (answers.vis && answers.tests);
+      }
+    }, {
+      name: 'jshint',
+      type: "confirm",
+      default: true,
+      message: 'Linting (Check code style with JSHint)',
+    }, {
      name: 'coverage',
      type: "confirm",
      default: true,
@@ -95,6 +113,18 @@ gulp.task('default', function(done) {
               files.push('!' + __dirname + '/snippets/**');
               files.push('!' + __dirname + '/test/index.html');
               files.push('!' + __dirname + '/test/dom/**');
+            }
+
+            if(!(answers.vis && answers.tests)){
+              answers.phantomjs = false;
+            }
+
+            if (!answers.phantomjs) {
+              files.push('!' + __dirname + '/test/dom/**');
+            }
+
+            if (!answers.jshint) {
+              files.push('!' + __dirname + '/_jshintrc');
             }
 
             //TODO

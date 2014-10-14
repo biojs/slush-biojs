@@ -19,13 +19,14 @@ var browserify = require('browserify');
 var watchify = require('watchify')
 var uglify = require('gulp-uglify');
 
+<% if (jshint){ %>
 // testing
-var mocha = require('gulp-mocha');
-<% if (vis){ %>
+var mocha = require('gulp-mocha'); <% if (vis && phantomjs){ %>
 var mochaPhantomJS = require('gulp-mocha-phantomjs'); <% } %>
+<% } %>
 
-// code style
-var jshint = require('gulp-jshint'); <% if (coverage){ %>
+// code style <% if (jshint){ %>
+var jshint = require('gulp-jshint'); <% } if (coverage){ %>
 var coveralls = require('gulp-coveralls'); <% } %>
 
 // gulp helper
@@ -49,15 +50,18 @@ var packageConfig = require('./package.json');
 
 // a failing test breaks the whole build chain
 gulp.task('build', ['build-browser', 'build-browser-gzip']);
-gulp.task('default', ['lint', 'test', <% if(coverage){ %>'coveralls',<% } %> 'build']);
+gulp.task('default', [<% if(jshint){ %>'lint',<% } %><% if(tests){ %>'test',<% } %> <% if(coverage){ %>'coveralls',<% } %> 'build']);
 
 
+<% if (jshint){ %>
 gulp.task('lint', function() {
   return gulp.src('./lib/*.js')
     .pipe(jshint())
     .pipe(jshint.reporter('default'));
 });
+<% } %>
 
+<% if (tests){ %>
 <% if (vis){ %>
 gulp.task('test', ['test-unit', 'test-dom']);
 <% }else{ %>
@@ -70,7 +74,7 @@ gulp.task('test-unit', function () {
                     useColors: false}));
 });
 
-<% if (vis){ %>
+<% if (vis && phantomjs ){ %>
 gulp.task('test-dom', ["build-test"], function () {
   return gulp
   .src('test/index.html')
@@ -89,18 +93,19 @@ gulp.task('build-test',['init'], function() {
 
 <% } %>
 
+gulp.task('test-watch', function() {
+   gulp.watch(['./src/**/*.js','./lib/**/*.js', './test/**/*.js'], function() {
+     gulp.run('test');
+   });
+});
+<% } %>
+
 <% if (coverage){ %>
 gulp.task('coveralls', function () {
     return gulp.src('coverage/lcov.info')
 	.pipe(coveralls());
 });
 <% } %>
-
-gulp.task('test-watch', function() {
-   gulp.watch(['./src/**/*.js','./lib/**/*.js', './test/**/*.js'], function() {
-     gulp.run('test');
-   });
-});
 
 
 // will remove everything in build
