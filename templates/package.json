@@ -74,7 +74,7 @@
     }
   }, <% if(vis){ %>
   "sniper": {
-     "js": [ "/build/<%= appNameSlug %>.js"],
+     "js": [ "/build/<%= appNameVar %>.js"],
      "snippets": ["snippets"],
      "first": "simple_example"
    }, <% } %>
