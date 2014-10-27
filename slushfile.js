@@ -114,6 +114,7 @@ gulp.task('default', function(done) {
               files.push('!' + __dirname + '/templates/test/index.html');
             }
 
+            // check when PhantomJS should be automatically ignored
             if(!(answers.vis && answers.tests)){
               answers.phantomjs = false;
             }
