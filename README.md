@@ -45,8 +45,8 @@ How to use
 gulp test
 ```
 
-Non-DOM `gulp test-unit` (folder: `test/unit`)
-DOM-only `gulp test-dom` (folder: `test/dom`)
+* Non-DOM `gulp test-unit` (folder: `test/unit`)
+* DOM-only `gulp test-dom` (folder: `test/dom`)
 
 The Unit tests are run with PhantomJS, if you want to debug them open the `test/index.html` 
 your browser.
