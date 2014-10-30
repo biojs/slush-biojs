@@ -166,6 +166,8 @@ gulp.task('watch', function() {
 
   var b = browserify({debug: true,hasExports: true, cache: {}, packageCache: {} });
   b.add('./index.js', {expose: packageConfig.name});
+  // expose other bundles
+  exposeBundles(b);
 
   function rebundle(ids){
     b.bundle()
