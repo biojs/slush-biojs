@@ -1,11 +1,10 @@
 <meta charset="utf-8">
-<script src="build/<%= appNameSlug %>.js"></script>
+<script src="build/<%= appNameVar %>.js"></script>
 
 <div id=yourDiv></div>
 <script>
-// you can 
 var yourDiv = document.getElementById("yourDiv");
-//var <%= appNameVar %> = require('<%= appNameSlug %>');
+var <%= appNameVar %> = require('<%= appNameSlug %>');
 var result = <%= appNameVar %>.hello('biojs');
 yourDiv.textContent = result;
 </script>
