@@ -1,6 +1,6 @@
 # <%= appName %>
 
-[![NPM version](http://img.shields.io/npm/v/<%= appNameSlug %>.svg)](https://www.npmjs.org/package/<%= appNameSlug %>) <% if(tests){
+[![NPM version](http://img.shields.io/npm/v/<%= appNameSlug %>.svg)](https://www.npmjs.org/package/<%= appNameSlug %>) <% if(tests){ %>
 [![Build Status](https://secure.travis-ci.org/<%= userName %>/<%= appNameSlug %>.png?branch=master)](http://travis-ci.org/<%= userName %>/<%= appNameSlug %>) <% } if(coverage) { %>
 [![Coverage Status](https://img.shields.io/coveralls/<%= userName %>/<%= appNameSlug %>.svg)](https://coveralls.io/r/<%= userName %>/<%= appNameSlug %>) <% } %>
 
