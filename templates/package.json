@@ -32,7 +32,7 @@
   },
   "dependencies": {},
   "devDependencies": {<% if (vis){ %>
-	"biojs-sniper": "^0.0.4", <% } %> <% if (coverage){ %>
+	"biojs-sniper": "^0.0.7", <% } %> <% if (coverage){ %>
     "blanket": "^1.1.6", <% } %>
     "browserify": "5.x", <% if (tests){ %>
     "chai": "^1.9.1", <% } if (coverage){ %>
