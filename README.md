@@ -21,6 +21,9 @@ Remember to install `slush` globally as well, if you haven't already:
 npm install -g slush
 ```
 
+Warning: You might need to use `sudo`. 
+You can also setup npm to install packages [into your userdir](https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md).
+
 ### Usage
 
 Create a new folder for your project:
