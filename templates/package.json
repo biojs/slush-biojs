@@ -20,7 +20,7 @@
       "url": "https://github.com/<%= userName %>/<%= appNameSlug %>/blob/master/LICENSE"
     }
   ],
-  "main": "index.js",
+  "main": "lib/<%= appNameVar %>.js",
   "scripts": { <% if (tests) { %>
     "test": "gulp", <% } %>
 	"build": "gulp build",

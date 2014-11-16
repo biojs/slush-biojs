@@ -151,7 +151,7 @@ gulp.task('build-browser-gzip', ['build-browser-min'], function() {
 // exposes the main package
 // + checks the config whether it should expose other packages
 function exposeBundles(b){
-  b.add('./index.js', {expose: packageConfig.name });
+  b.add("./" + packageConfig.main, {expose: packageConfig.name });
   if(packageConfig.sniper !== undefined && packageConfig.sniper.exposed !== undefined){
     for(var i=0; i<packageConfig.sniper.exposed.length; i++){
       b.require(packageConfig.sniper.exposed[i]);
@@ -165,7 +165,7 @@ gulp.task('watch', function() {
   var util = require('gulp-util')
 
   var b = browserify({debug: true,hasExports: true, cache: {}, packageCache: {} });
-  b.add('./index.js', {expose: packageConfig.name});
+  b.add("./" + packageConfig.main, {expose: packageConfig.name});
   // expose other bundles
   exposeBundles(b);
 
