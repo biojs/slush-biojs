@@ -42,12 +42,16 @@ cd my-module && slush biojs
 How to use
 -----------
 
+`npm run` provides a run environment with all locally installed modules in the
+`PATH` var. So if you hate typing, you can install the programm globally (`-g`).
 
 ### 1. Test
 
 ~~~
-gulp test
+npm run test
 ~~~
+
+Executed command: `gulp test`
 
 They are grouped into two sections:
 
@@ -63,7 +67,7 @@ your browser.
 If you want to auto-execute all your test on a file change, run:
 
 ~~~
-gulp test-watch
+npm run test-watch
 ~~~
 
 ### 2. Snippets
@@ -77,6 +81,7 @@ npm run sniper
 
 and open [http://localhost:9090/snippets](http://localhost:9090/snippets)
 
+Executed command: `biojs-sniper`
 
 ### 3. Watchify
 
@@ -87,6 +92,8 @@ Combine this with the sniper.
 ~~~
 npm run watch
 ~~~
+
+Executed command: `gulp watch`
 
 Enjoy.
 

@@ -22,13 +22,14 @@
   ],
   "main": "lib/<%= appNameVar %>.js",
   "scripts": { <% if (tests) { %>
-    "test": "gulp", <% } %>
+    "test": "gulp test", <% } %>
 	"build": "gulp build",
     "build-browser": "gulp build-browser",
 	"build-browser-min": "gulp build-browser-gzip",
 	"prepublish": "gulp",
 	"sniper": "biojs-sniper .",
     "watch": "gulp watch"
+    "test-watch": "gulp test-watch"
   },
   "dependencies": {},
   "devDependencies": {<% if (vis){ %>
