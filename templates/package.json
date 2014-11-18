@@ -28,7 +28,7 @@
 	"build-browser-min": "gulp build-browser-gzip",
 	"prepublish": "gulp",
 	"sniper": "biojs-sniper .",
-    "watch": "gulp watch"
+    "watch": "gulp watch",
     "test-watch": "gulp test-watch"
   },
   "dependencies": {},
