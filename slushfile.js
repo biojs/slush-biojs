@@ -151,6 +151,9 @@ gulp.task('default', function(done) {
             if(!("biojs" in answers.keywords)){
               answers.keywords.push("biojs");
             }
+            for(var key in answers.keywords){
+              answers.keywords[key] = answers.keywords[key].trim();
+            }
             answers.keywordList = JSON.stringify(answers.keywords);
 
             gulp.src(files)
