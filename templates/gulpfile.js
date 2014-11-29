@@ -35,7 +35,6 @@ var gzip = require('gulp-gzip');
 var rename = require('gulp-rename');
 var chmod = require('gulp-chmod');
 var streamify = require('gulp-streamify'); // converts streams into buffers (legacy support for old plugins)
-var watch = require('gulp-watch');
 
 // path tools
 var fs = require('fs');
@@ -94,9 +93,7 @@ gulp.task('build-test',['init'], function() {
 <% } %>
 
 gulp.task('test-watch', function() {
-   gulp.watch(['./src/**/*.js','./lib/**/*.js', './test/**/*.js'], function() {
-     gulp.run('test');
-   });
+   gulp.watch(['./src/**/*.js','./lib/**/*.js', './test/**/*.js'], ['test']);
 });
 <% } %>
 
