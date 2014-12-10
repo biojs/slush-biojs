@@ -10,12 +10,29 @@ var gulp = require('gulp'),
     template = require('gulp-template'),
     rename = require('gulp-rename'),
     str = require('underscore.string'),
-    inquirer = require('inquirer');
+    inquirer = require('inquirer'),
+    username = require('username'),
+    _ = require('underscore'),
+    fullnameTask = require('fullname');
+
+var exec = require('child_process').exec;
+
+// set handy defaults
+
+var fullname = "";
+var email = "";
+var username = "";
+fullnameTask(function(err,name){
+    fullname = name;
+});
+exec('git config --global user.email', function (err, stdout) {
+			email = stdout.trim();
+});
 
 gulp.task('default', function(done) {
     var prompts = [{
         name: 'appName',
-        message: 'Module name?'
+        message: 'Module name? (required)'
     }, {
         name: 'appDescription',
         message: 'Description?'
@@ -26,12 +43,21 @@ gulp.task('default', function(done) {
     }, {
         name: 'authorName',
         message: 'Author name?',
+        default: function(){
+          return fullname || username || "";
+        }
     }, {
         name: 'authorEmail',
         message: 'Author email?',
+        default: function(){
+          return email || "";
+        }
     }, {
         name: 'userName',
         message: 'Github username?',
+        default: function(answers){
+          return answers.name;
+        }
     }, {
         name: 'keywords',
         message: 'Keywords for npm (separate with comma)',
@@ -40,30 +66,41 @@ gulp.task('default', function(done) {
       type: "confirm",
       default: true,
       message: 'A visualization lib?',
+  }, {
+      name: 'gulp',
+      type: "confirm",
+      default: false,
+      message: 'Configure a build system? (recommended)',
    }, {
       name: 'tests',
       type: "confirm",
       default: true,
       message: 'Unit tests',
+      when: function(answers){
+          return !!answers.gulp;
+        }
    }, {
       name: 'phantomjs',
       type: "confirm",
-      default: true,
+      default: false,
       message: 'UI tests with PhantomJS (headless browser)',
       when: function(answers){
-        return (answers.vis && answers.tests);
+        return (answers.vis && answers.tests && answers.gulp);
       }
     }, {
       name: 'jshint',
       type: "confirm",
       default: true,
       message: 'Linting (Check code style with JSHint)',
-    }, {
+      when: function(answers){
+        return answers.gulp;
+      }
+    }, /*{
      name: 'coverage',
      type: "confirm",
      default: true,
      message: 'Check code coverage?',
-    },{
+    },*/ {
         type: 'list',
         name: 'license',
         message: 'Choose your license type',
@@ -88,6 +125,9 @@ gulp.task('default', function(done) {
             if (!answers.moveon) {
                 return done();
             }
+
+            // defaults
+            answers.tests = answers.tests || false;
 
             answers.appNameSlug = str.slugify(answers.appName)
             // some chars are not valid chars for a variable
@@ -131,6 +171,28 @@ gulp.task('default', function(done) {
             if (!answers.tests) {
               files.push('!' + __dirname + '/templates/{test,test/**}');
             }
+
+            var commands = {};
+            if (!answers.gulp) {
+              files.push('!' + __dirname + '/templates/gulpfile.js');
+              commands.test = "echo 'Error: no test specified' && exit 1";
+              commands.build = "mkdirp build && browserify -r ./:"+answers.appNameSlug+" -o build/" + answers.appNameVar + ".js";
+              commands["build-browser"] = "npm run build";
+              commands.prepublish = "npm run build";
+              commands.watch = "watchify -r ./:"+answers.appNameSlug+" -v -o build/" + answers.appNameVar + ".js";
+            }else{
+              commands.test = "gulp test";
+              commands.build = "gulp build";
+              commands["build-browser"] = "gulp build-browser";
+              commands["build-browser-min"] = "gulp build-browser-gzip";
+              commands.prepublish = "gulp build";
+              commands.watch = "gulp watch";
+              commands["test-watch"] = "gulp test-watch";
+            }
+
+            // default commands
+            commands.sniper = "biojs-sniper .";
+            answers.scripts = _.map(commands, function(val,key){ return '\t\t"' + key + '": "' + val + '"' }).join(",\n");
 
             //TODO
             answers.coverage = false;
