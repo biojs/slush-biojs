@@ -79,7 +79,7 @@ These snippets will be used for the [BioJS registry](http://registry.biojs.net).
 npm run sniper
 ~~~
 
-and open [http://localhost:9090/snippets](http://localhost:9090/snippets)
+and open [http://localhost:9090/examples](http://localhost:9090/examples)
 
 Executed command: `biojs-sniper`
 
