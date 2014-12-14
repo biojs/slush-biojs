@@ -281,7 +281,7 @@ inq.getDevDependencies = function(a) {
     devDependencies["gulp-streamify"] = "^0.0.5";
     devDependencies["gulp-uglify"] = "^1.0.1";
     devDependencies["gulp-util"] = "^3.0.1";
-    devDependencies["viny-source-stream"] = "^1.0.0";
+    devDependencies["vinyl-source-stream"] = "^1.0.0";
   }
 
   return devDependencies;
