@@ -68,7 +68,11 @@ gulp.task('test', ['test-unit']);
 <% } %>
 
 gulp.task('test-unit', function () {
+<% if (phantomjs ){ %>
     return gulp.src('./test/unit/**/*.js', {read: false})
+<% } else { %>
+    return gulp.src('./test/**/*.js', {read: false})
+<% } %>
         .pipe(mocha({reporter: 'spec',
                     useColors: true}));
 });

@@ -17,8 +17,10 @@ var assert = chai.assert;
 chai.expect();
 chai.should();
 
-// requires your main app (specified in index.js)
+// requires your main app (specified in index.js)<% if (phantomjs ){ %>
 var <%= appNameVar %> = require('../..');
+<% }else{ %>
+var <%= appNameVar %> = require('../');<% } %>
 
 describe('<%= appNameSlug %> module', function(){
   describe('#hello()', function(){
