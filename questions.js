@@ -93,9 +93,6 @@ module.exports.getPrompts = function(prev, opts){
         if( prev.jshint !== undefined) return prev.jshint;
         return false;
       },
-      when: function(answers) {
-        return answers.gulp;
-      }
     },
     /*{
          name: 'coverage',

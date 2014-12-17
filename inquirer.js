@@ -215,6 +215,9 @@ inq.getCommands = function(answers, files) {
     if (answers.tests) {
       commands.test = "mocha";
     }
+    if (answers.jshint) {
+      commands.lint = "jshint -c .jshintrc lib --verbose";
+    }
   } else {
     commands.build = "gulp build";
     commands["build-browser"] = "gulp build-browser";
@@ -248,17 +251,17 @@ inq.getDevDependencies = function(a) {
     }
   }
 
-  if (a.jshint && a.gulp) {
-    devDependencies["jshint"] = "^1.8.4";
-  }
-
   if (a.vis) {
     devDependencies["biojs-sniper"] = "0.x";
     devDependencies["watchify"] = "^1.0.6";
   }
 
-  if (a.jshint && a.gulp) {
-    devDependencies["gulp-jshint"] = "1.x";
+  if (a.jshint) {
+    if (a.gulp) {
+      devDependencies["gulp-jshint"] = "1.x";
+    } else {
+      devDependencies["jshint"] = "^2.5.10";
+    }
   }
 
   if (a.tests) {
