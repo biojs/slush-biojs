@@ -16,13 +16,13 @@ var assert = chai.assert;
 var yourDiv = document.getElementById('mocha');
 
 // requires your main app (specified in index.js)
-var <%= appNameVar %> = require('../..');
+var <%= appNameShort %> = require('../..');
 
 describe('<%= appNameSlug %> module', function(){
   describe('#init()', function(){
     it('should fill the textBox', function(){
       var opts = {el: yourDiv, text: 'biojs'};
-      var instance = new <%= appNameVar %>(opts);
+      var instance = new <%= appNameShort %>(opts);
       assert.equal(yourDiv.textContent,"hello biojs");
     });
   });

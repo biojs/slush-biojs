@@ -18,18 +18,18 @@ chai.expect();
 chai.should();
 
 // requires your main app (specified in index.js)<% if (phantomjs ){ %>
-var <%= appNameVar %> = require('../..');
+var <%= appNameShort %> = require('../..');
 <% }else{ %>
-var <%= appNameVar %> = require('../');<% } %>
+var <%= appNameShort %> = require('../');<% } %>
 
 describe('<%= appNameSlug %> module', function(){
   describe('#hello()', function(){
     it('should return a hello', function(){
 
-      assert.equal(<%= appNameVar %>.hello('biojs'), ("hello biojs"));
+      assert.equal(<%= appNameShort %>.hello('biojs'), ("hello biojs"));
       
       // alternative styles
-      <%= appNameVar %>.hello('biojs').should.equal("hello biojs");
+      <%= appNameShort %>.hello('biojs').should.equal("hello biojs");
     });
   });
 });
