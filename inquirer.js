@@ -37,6 +37,14 @@ inq.ask = function ask(prompts, cb) {
       // some chars are not valid chars for a variable
       answers.appNameVar = answers.appNameSlug.split("-").join("");
       answers.appNameVar = answers.appNameVar.split("_").join("");
+      answers.appNameShort = answers.appNameSlug;
+      // try to make the name shorter
+      ["-", "_", "."].forEach(function(item) {
+        if (answers.appNameShort.indexOf(item) >= 0) {
+          var splitted = answers.appNameShort.split(item);
+          answers.appNameShort = splitted[splitted.length - 1];
+        }
+      });
 
       var d = new Date();
       answers.year = d.getFullYear();
@@ -114,7 +122,7 @@ inq.ask = function ask(prompts, cb) {
       gulp.src(files)
         .pipe(template(answers))
         .pipe(rename(function(file) {
-          var appReplace = file.basename.replace(new RegExp('appName', 'g'), answers.appNameVar);
+          var appReplace = file.basename.replace(new RegExp('appNameShort', 'g'), answers.appNameShort);
           file.basename = appReplace;
           // choose the correct license
           if (answers.license === 'MIT') {
@@ -205,12 +213,12 @@ inq.getCommands = function(answers, files) {
   if (!answers.gulp) {
     files.push('!' + __dirname + '/templates/gulpfile.js');
     files.push('!' + __dirname + '/templates/test/index.html');
-    commands.build = "mkdirp build && browserify -r ./:" + answers.appNameSlug + " -o build/" + answers.appNameVar + ".js";
+    commands.build = "mkdirp build && browserify -r ./:" + answers.appNameSlug + " -o build/" + answers.appNameShort + ".js";
     commands["build-browser"] = "npm run build";
     commands.prepublish = "npm run build";
 
     if (answers.vis) {
-      commands.watch = "watchify -r ./:" + answers.appNameSlug + " -v -o build/" + answers.appNameVar + ".js";
+      commands.watch = "watchify -r ./:" + answers.appNameSlug + " -v -o build/" + answers.appNameShort + ".js";
     }
     if (answers.tests) {
       commands.test = "mocha";

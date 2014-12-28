@@ -40,7 +40,7 @@
     }
   }, <% } %><% if(vis){ %>
   "sniper": {
-    "js": [ "/build/<%= appNameVar %>.js"],
+    "js": [ "/build/<%= appNameShort %>.js"],
     "snippets": ["examples"],
     "first": "simple"
    }, <% } %>

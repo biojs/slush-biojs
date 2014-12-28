@@ -9,7 +9,7 @@
 
 // browserify build config
 var buildDir = "build";
-var outputFile = "<%= appNameVar %>";
+var outputFile = "<%= appNameShort %>";
 
 // packages
 var gulp   = require('gulp');

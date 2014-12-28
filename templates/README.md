@@ -10,8 +10,8 @@
 Install the module with: `npm install <%= appNameSlug %>`
 
 ```javascript
-var <%= appNameVar %> = require('<%= appNameSlug %>');
-<%= appNameVar %>.hello("biojs"); // "hello biojs"
+var <%= appNameShort %> = require('<%= appNameSlug %>');
+<%= appNameShort %>.hello("biojs"); // "hello biojs"
 ```
 
 ## Documentation
@@ -27,14 +27,15 @@ The 'hello' method is responsible for showing a name.
 How to use this method
 
 ```javascript
-<%= appNameVar %>.hello('biojs'); // "hello biojs"
+<%= appNameShort %>.hello('biojs'); // "hello biojs"
 ```
 
 ## Contributing
 
-Please submit all issues and pull requests to the [<%= userName %>/<%= appNameSlug %>](http://github.com/<%= userName %>/<%= appNameSlug %>) repository!
+All contributions are welcome.
 
 ## Support
+
 If you have any problem or suggestion please open an issue [here](https://github.com/<%= userName %>/<%= appNameSlug %>/issues).
 
 ## License <% if (license === 'MIT') { %>
@@ -62,8 +63,7 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
 HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.<% } %>
-<% if (license === 'BSD') { %>
+OTHER DEALINGS IN THE SOFTWARE.<% } %><% if (license === 'BSD') { %>
 The BSD License
 
 Copyright (c) <%= year %>, <%= authorName %>
@@ -93,8 +93,7 @@ ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
 LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
 ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.<% } %>
-<% if (license === 'Apache 2') { %>
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.<% } %><% if (license === 'Apache 2') { %>
 This software is licensed under the Apache 2 license, quoted below.
 
 Copyright (c) <%= year %>, <%= authorName %>
