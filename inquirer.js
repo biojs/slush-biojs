@@ -55,7 +55,7 @@ inq.ask = function ask(prompts, cb) {
       }
 
       if (!answers.vis) {
-        files.push('!' + __dirname + '/templates/{snippets,snippets/**}');
+        files.push('!' + __dirname + '/templates/{examples,examples/**}');
         files.push('!' + __dirname + '/templates/test/index.html');
       }
 
