@@ -20,7 +20,7 @@
       "url": "https://github.com/<%= userName %>/<%= appNameSlug %>/blob/master/LICENSE"
     }
   ],
-  "main": "lib/<%= appNameVar %>.js",
+  "main": "lib/index.js",
   "scripts": {
 <%= scripts %>
   },
