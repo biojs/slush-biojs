@@ -1,6 +1,6 @@
 {
   "name": "slush-biojs",
-  "version": "0.5.2",
+  "version": "0.6.0",
   "description": "A slush generator for BioJS modules",
   "keywords": [
     "slushgenerator",
@@ -36,6 +36,7 @@
     "gulp-rename": "~1.2.0",
     "gulp-template": "~1.1.0",
     "inquirer": "^0.7.3",
+    "rc": "^0.5.4",
     "underscore": "^1.7.0",
     "underscore.string": "^2.3.3",
     "username": "^1.0.0"

@@ -97,6 +97,31 @@ Executed command: `gulp watch`
 
 Enjoy.
 
+Configuration
+---------------
+
+* command line arguments (parsed by minimist)
+* environment variables prefixed with `slush-biojs_`
+* if you passed an option `--config file` then from that file
+* a local `.slush-biojsrc` or the first found looking in `./ ../ ../../ ../../../` etc.
+* `$HOME/.slush-biojsrc`
+* `$HOME/.slush-biojs/config`
+* `$HOME/.config/slush-biojs`
+* `$HOME/.config/slush-biojs/config`
+* `/etc/slush-biojsrc`
+* `/etc/slush-biojs/config`
+
+### Example
+
+```
+{
+  "authorName": "greenify",
+  "authorEmail": "greeenify@gmail.com",
+  "userName": "greenify"
+  "license": "MIT"
+}
+```
+
 [npm-url]: https://npmjs.org/package/slush-biojs
 [npm-image]: https://badge.fury.io/js/slush-biojs.svg
 [daviddm-url]: https://david-dm.org/biojs/slush-biojs
