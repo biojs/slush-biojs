@@ -20,7 +20,8 @@
       "url": "https://github.com/<%= userName %>/<%= appNameSlug %>/blob/master/LICENSE"
     }
   ],
-  "main": "lib/index.js",
+  "main": "lib/index.js",<% if (css){ %>
+  "style": "css/*.css", <% } %>
   "scripts": {
 <%= scripts %>
   },
@@ -40,7 +41,8 @@
     }
   }, <% } %><% if(vis){ %>
   "sniper": {
-    "js": [ "/build/<%= appNameShort %>.js"],
+    "js": [ "/build/<%= appNameShort %>.js"],<% if (css){ %>
+    "css": ["/build/bundle.css"], <% } %>
     "snippets": ["examples"],
     "first": "simple"
    }, <% } %>

@@ -10,7 +10,7 @@ module.exports.getKeys = function(){
 module.exports.getPrompts = function(prev, opts){
   prev = prev || {};
   opts = opts || {};
-  conf = rc("slush-biojs", {
+  var conf = rc("slush-biojs", {
     appDescription: '',
     appVersion: '0.1.0',
     authorName: opts.fullname || opts.username || "",
@@ -19,7 +19,9 @@ module.exports.getPrompts = function(prev, opts){
     gulp: false,
     phantomjs: false,
     vis: true,
-    tests: true,
+    testsNonVis: true,
+    testsVisComponents: false,
+    css: true,
     jshint: false,
     license: "Apache 2"
   });
@@ -78,14 +80,28 @@ module.exports.getPrompts = function(prev, opts){
       name: 'tests',
       type: "confirm",
       message: 'Unit tests',
-      default: function() {
+      default: function(answers) {
         if( prev.test !== undefined) return prev.test;
-        return conf.tests;
+        if(answers.vis){
+          return conf.testsVisComponents;
+        }
+        return conf.testsNonVis;
+      }
+    }, {
+      name: 'css',
+      type: "confirm",
+      message: 'Add a example css file?',
+      default: function() {
+        if( prev.css !== undefined) return prev.css;
+        return conf.css;
+      },
+      when: function(answers) {
+        return answers.vis;
       }
     }, {
        name: 'gulp',
       type: "confirm",
-      message: 'Configure a build system? (recommended)',
+      message: 'Configure a build system? (Gulp)',
       default: function() {
         if( prev.gulp !== undefined) return prev.gulp;
         return conf.gulp;

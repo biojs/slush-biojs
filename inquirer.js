@@ -85,8 +85,12 @@ inq.ask = function ask(prompts, cb) {
         files.push('!' + __dirname + '/templates/{test,test/**}');
       }
 
+      if (!answers.css) {
+        files.push('!' + __dirname + '/templates/{css,css/**}');
+      }
 
-      //TODO
+
+      //TODO - coverage is not working
       answers.coverage = false;
 
       if (!answers.coverage) {
@@ -202,6 +206,28 @@ inq.showHelp = function(answers) {
     show();
   }
 
+  if (scripts.css !== undefined) {
+    show("npm run css".green);
+    show("* will bundle all your css files of your package and your dependencies (supports CSS transforms)");
+    show();
+
+    show("npm run watch-css".green);
+    show("* will listen to file changes and hence rerun the css pipeline)");
+    show();
+  }
+
+  if (scripts.w !== undefined) {
+    show("npm run w".green);
+    show("Runs all these commands in one shell");
+    show("* `npm run sniper`");
+    show("* `npm run watch`");
+    if (scripts.css !== undefined) {
+      show("* `npm run watch-css`");
+    }
+    show();
+  }
+
+
   show("For more details see: https://github.com/biojs/slush-biojs");
   show();
 };
@@ -209,6 +235,7 @@ inq.showHelp = function(answers) {
 inq.getCommands = function(answers, files) {
   var commands = {};
   commands.test = "echo 'Error: no test specified' && exit 1";
+
 
   if (!answers.gulp) {
     files.push('!' + __dirname + '/templates/gulpfile.js');
@@ -238,7 +265,14 @@ inq.getCommands = function(answers, files) {
     }
   }
   if (answers.vis) {
+    commands.w = "prunner 'npm run sniper' 'npm run watch'";
     commands.sniper = "biojs-sniper .";
+    if (answers.css) {
+      commands.prepublish += " && npm run css";
+      commands.w += " 'npm run watch-css'";
+      commands.css = "parcelify ./ -c build/bundle.css";
+      commands["watch-css"] = "parcelify -w ./ -c build/bundle.css --loglevel verbose";
+    }
   }
   return commands;
 };
@@ -262,6 +296,11 @@ inq.getDevDependencies = function(a) {
   if (a.vis) {
     devDependencies["biojs-sniper"] = "0.x";
     devDependencies["watchify"] = "^1.0.6";
+    devDependencies["prunner"] = "1.x";
+  }
+
+  if (a.css) {
+    devDependencies["parcelify"] = "0.x";
   }
 
   if (a.jshint) {
