@@ -45,7 +45,32 @@ How to use
 `npm run` provides a run environment with all locally installed modules in the
 `PATH` var. So if you hate typing, you can install the programm globally (`-g`).
 
-### 1. Test
+### 1. Snippets / Examples (only for visulization)
+
+Allows you to write minimal example [snippets](https://github.com/biojs/biojs-sniper) of your visualization.
+These snippets will be used for the [BioJS registry](http://biojs.io) and each snippet can visualize for one specific use case of your component (e.g. adjusting the menubar or changing default color). Those snippets can later be easily edited in a web editor like JSBin and thus should be minimal. A rule of thumb maximum for a snippet is 10 lines (otherwise your component is probably really hard to use).
+
+~~~
+npm run sniper
+~~~
+
+and open [http://localhost:9090/examples](http://localhost:9090/examples)
+
+Executed command: `biojs-sniper`
+
+### 2. Watchify (only for visuliazation)
+
+Watches all your files and runs [browserify](http://browserify.org) on every change.
+Combine this with the sniper.
+(Subsequent runs of watchify are fast).
+
+~~~
+npm run watch
+~~~
+
+Executed command: `gulp watch`
+
+### 3. Test (optional)
 
 ~~~
 npm run test
@@ -70,32 +95,33 @@ If you want to auto-execute all your test on a file change, run:
 npm run test-watch
 ~~~
 
-### 2. Snippets
+### 4. CSS (optional + only for visuliazation)
 
-Allows you to write minimal example [snippets](https://github.com/biojs/biojs-sniper) of your visualization.
-These snippets will be used for the [BioJS registry](http://biojs.io).
-
-~~~
-npm run sniper
-~~~
-
-and open [http://localhost:9090/examples](http://localhost:9090/examples)
-
-Executed command: `biojs-sniper`
-
-### 3. Watchify
-
-Watches all your files and runs [browserify](http://browserify.org) on every change.
-Combine this with the sniper.
-(Subsequent runs of watchify are fast).
+The will run `parcelify` and bundle all your CSS resources.
 
 ~~~
-npm run watch
+npm run css
 ~~~
 
-Executed command: `gulp watch`
+(you can add transforms for SASS or LESS and use the `npm run watch-css` to constantly watch for css changes)
 
-Enjoy.
+[Learn more about CSS Stylesheets in BioJS](https://github.com/biojs/biojs/wiki/Adding-CSS-stylesheets)
+
+### 5. Run everything at once
+
+~~~
+npm run w
+~~~
+
+This will be available depending on your slush configuration.
+It is an alias for:
+
+~~~
+prunner "npm run task1" "npm run task2"
+~~~
+
+Prunner allows on to run multiple npm tasks in one shell.
+Normally at least `npm run sniper` and `npm run watch` are included in this. Check your `package.json` for your exact configuration.
 
 Configuration
 ---------------
