@@ -265,11 +265,12 @@ inq.getCommands = function(answers, files) {
     }
   }
   if (answers.vis) {
-    commands.w = "prunner 'npm run sniper' 'npm run watch'";
+    // single quotes don't work on windows
+    commands.w = 'prunner \\"npm run sniper\\" \\"npm run watch\\"';
     commands.sniper = "biojs-sniper .";
     if (answers.css) {
       commands.prepublish += " && npm run css";
-      commands.w += " 'npm run watch-css'";
+      commands.w += ' \\"npm run watch-css\\"';
       commands.css = "parcelify ./ -c build/bundle.css";
       commands["watch-css"] = "parcelify -w ./ -c build/bundle.css --loglevel verbose";
     }
