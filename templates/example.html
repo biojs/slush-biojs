@@ -3,7 +3,7 @@
 
 <div id=yourDiv></div>
 <script>
-var yourDiv = document.getElementById("yourDiv");
+var rootDiv = document.getElementById("rootDiv");
 var <%= appNameVar %> = require('<%= appNameSlug %>');
 var result = <%= appNameVar %>.hello('biojs');
 yourDiv.textContent = result;
