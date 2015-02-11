@@ -118,6 +118,9 @@ inq.ask = function ask(prompts, cb) {
       answers.scripts = inq.dictToJSON(answers._scripts, files);
       answers.devDependencies = inq.dictToJSON(inq.getDevDependencies(answers));
 
+      // ignore the example.html by default
+      files.push('!' + __dirname + '/templates/example.html');
+
       var cbFire = function() {
         inq.showHelp(answers);
         cb(answers, false);
