@@ -21,7 +21,7 @@ module.exports.getPrompts = function(prev, opts){
     vis: true,
     testsNonVis: true,
     testsVisComponents: false,
-    css: true,
+    css: false,
     jshint: false,
     license: "Apache 2"
   });
