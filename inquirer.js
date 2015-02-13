@@ -298,7 +298,7 @@ inq.getDevDependencies = function(a) {
   }
 
   if (a.vis) {
-    devDependencies["biojs-sniper"] = "0.x";
+    devDependencies["sniper"] = "0.x";
     devDependencies["watchify"] = "^1.0.6";
     devDependencies["prunner"] = "1.x";
   }
