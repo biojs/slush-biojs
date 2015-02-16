@@ -1,5 +1,4 @@
 var gulp = require('gulp'),
-  install = require('gulp-install'),
   conflict = require('gulp-conflict'),
   template = require('gulp-template'),
   rename = require('gulp-rename'),
@@ -156,16 +155,17 @@ inq.ask = function ask(prompts, cb) {
         }))
         .pipe(conflict('./'))
         .pipe(gulp.dest('./'))
-        .pipe(install())
+        //        .pipe(install())
         .on('finish', function() {
           // do some cleanup on end
-          var prepub = function(){
-            var child = exec("npm run prepublish", function(error, stdout, stderr){
-              if(error){
-                console.log(error);
-              }
+          var prepub = function() {
+            var spawn = require('child_process').spawn;
+            var proc = spawn('npm', ['install']);
+            proc.stdout.pipe(process.stdout);
+            proc.stderr.pipe(process.stderr);
+            proc.on("close", function(){
+              cbFire();
             });
-            cbFire();
           };
           if (answers.tests && !answers.phantomjs) {
             fs.rmdir(join(process.cwd(), "test", "unit"), prepub);
