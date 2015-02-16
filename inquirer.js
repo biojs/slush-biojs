@@ -8,6 +8,7 @@ var gulp = require('gulp'),
   fs = require('fs'),
   join = require('path').join,
   _ = require('underscore');
+var exec = require('child_process').exec;
 var colors = require('colors');
 
 var inq = {};
@@ -155,15 +156,23 @@ inq.ask = function ask(prompts, cb) {
         }))
         .pipe(conflict('./'))
         .pipe(gulp.dest('./'))
-        .on('end', function() {
+        .pipe(install())
+        .on('finish', function() {
           // do some cleanup on end
-          if (answers.tests && !answers.phantomjs) {
-            fs.rmdir(join(process.cwd(), "test", "unit"), cbFire);
-          } else {
+          var prepub = function(){
+            var child = exec("npm run prepublish", function(error, stdout, stderr){
+              if(error){
+                console.log(error);
+              }
+            });
             cbFire();
+          };
+          if (answers.tests && !answers.phantomjs) {
+            fs.rmdir(join(process.cwd(), "test", "unit"), prepub);
+          } else {
+            prepub();
           }
         })
-        .pipe(install());
     });
 };
 
