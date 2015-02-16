@@ -270,7 +270,7 @@ inq.getCommands = function(answers, files) {
   if (answers.vis) {
     // single quotes don't work on windows
     commands.w = 'prunner \\"npm run sniper\\" \\"npm run watch\\"';
-    commands.sniper = "biojs-sniper .";
+    commands.sniper = "sniper .";
     if (answers.css) {
       commands.prepublish += " && npm run css";
       commands.w += ' \\"npm run watch-css\\"';
