@@ -87,6 +87,7 @@ inq.ask = function ask(prompts, cb) {
 
       if (!answers.css) {
         files.push('!' + __dirname + '/templates/{css,css/**}');
+        answers.css = false;
       }
 
 
@@ -254,7 +255,7 @@ inq.getCommands = function(answers, files) {
     files.push('!' + __dirname + '/templates/test/index.html');
     commands.build = "mkdirp build && browserify -r ./:" + answers.appNameSlug + " -o build/" + answers.appNameShort + ".js";
     commands["build-browser"] = "npm run build";
-    commands.prepublish = "npm run build";
+    commands.install= "npm run build";
 
     if (answers.vis) {
       commands.watch = "watchify -r ./:" + answers.appNameSlug + " -v -o build/" + answers.appNameShort + ".js";
@@ -269,7 +270,7 @@ inq.getCommands = function(answers, files) {
     commands.build = "gulp build";
     commands["build-browser"] = "gulp build-browser";
     commands["build-browser-min"] = "gulp build-browser-gzip";
-    commands.prepublish = "gulp build";
+    commands.install = "gulp build";
     commands.watch = "gulp watch";
     commands["test-watch"] = "gulp test-watch";
     if (answers.tests) {
@@ -281,7 +282,7 @@ inq.getCommands = function(answers, files) {
     commands.w = 'prunner \\"npm run sniper\\" \\"npm run watch\\"';
     commands.sniper = "sniper .";
     if (answers.css) {
-      commands.prepublish += " && npm run css";
+      commands.install += " && npm run css";
       commands.w += ' \\"npm run watch-css\\"';
       commands.css = "parcelify ./ -c build/bundle.css";
       commands["watch-css"] = "parcelify -w ./ -c build/bundle.css --loglevel verbose";
