@@ -30,6 +30,16 @@ gulp.task('default', function(done) {
     opts.email = stdout.trim();
   });
 
+  exec('npm -v ', function(err, stdout) {
+      var parts = stdout.split(".");
+      if(parts[0] < 2){
+        console.log();
+        console.log("Your npm version is outdated. Please update");
+        console.log("https://github.com/joyent/node/wiki/installing-node.js-via-package-manager");
+        process.exit(1);
+      }
+  });
+
   var prev = {};
   var prompts = questions.getPrompts(prev, opts);
   var repeater = function(answers, repeat) {
