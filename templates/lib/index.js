@@ -2,7 +2,7 @@
  * <%= appNameSlug %>
  * https://github.com/<%= userName %>/<%= appNameSlug %>
  *
- * Copyright (c) 2014 <%= authorName %>
+ * Copyright (c) <%= year %> <%= authorName %>
  * Licensed under the <%= license %> license.
  */
 
