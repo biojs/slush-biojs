@@ -54,7 +54,7 @@ inq.ask = function ask(prompts, cb) {
       if (answers.license === 'MIT') {
         files.push('!' + __dirname + '/templates/LICENSE_BSD');
         files.push('!' + __dirname + '/templates/LICENSE_APACHE');
-      } else if (answers.license === 'Apache 2') {
+      } else if (answers.license === 'Apache-2.0') {
         files.push('!' + __dirname + '/templates/LICENSE_BSD');
         files.push('!' + __dirname + '/templates/LICENSE_MIT');
       } else {
@@ -136,7 +136,7 @@ inq.ask = function ask(prompts, cb) {
           if (answers.license === 'MIT') {
             var mit = file.basename.replace('LICENSE_MIT', 'LICENSE');
             file.basename = mit;
-          } else if (answers.license === 'Apache 2') {
+          } else if (answers.license === 'Apache-2.0') {
             var apache = file.basename.replace('LICENSE_APACHE', 'LICENSE');
             file.basename = apache;
           } else {

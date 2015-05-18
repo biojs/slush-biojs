@@ -23,7 +23,7 @@ module.exports.getPrompts = function(prev, opts){
     testsVisComponents: false,
     css: false,
     jshint: false,
-    license: "Apache 2"
+    license: "Apache-2.0"
   });
 
   var prompts = [{
@@ -136,7 +136,7 @@ module.exports.getPrompts = function(prev, opts){
       type: 'list',
       name: 'license',
       message: 'Choose your license type',
-      choices: ['Apache 2', 'MIT', 'BSD'],
+      choices: ['Apache-2.0', 'MIT', 'BSD'],
       default: function() {
         return prev.license || conf.license;
       }

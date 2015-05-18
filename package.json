@@ -1,6 +1,6 @@
 {
   "name": "slush-biojs",
-  "version": "0.7.12",
+  "version": "0.7.13",
   "description": "A slush generator for BioJS modules",
   "keywords": [
     "slushgenerator",
