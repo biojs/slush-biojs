@@ -255,7 +255,7 @@ inq.getCommands = function(answers, files) {
     files.push('!' + __dirname + '/templates/test/index.html');
     commands.build = "mkdirp build && browserify -r ./:" + answers.appNameSlug + " -o build/" + answers.appNameShort + ".js";
     commands["build-browser"] = "npm run build";
-    commands.install= "npm run build";
+    commands.prepublish = "npm run build";
 
     if (answers.vis) {
       commands.watch = "watchify -r ./:" + answers.appNameSlug + " -v -o build/" + answers.appNameShort + ".js";
