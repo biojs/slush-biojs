@@ -14,12 +14,7 @@
   "bugs": {
     "url": "https://github.com/<%= userName %>/<%= appNameSlug %>/issues"
   },
-  "licenses": [
-    {
-      "type": "<%= license %>",
-      "url": "https://github.com/<%= userName %>/<%= appNameSlug %>/blob/master/LICENSE"
-    }
-  ],
+  "license": "<%= license %>",
   "main": "lib/index.js",<% if (css){ %>
   "style": "css/*.css", <% } %>
   "scripts": {
