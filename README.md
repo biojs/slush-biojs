@@ -45,7 +45,7 @@ How to use
 `npm run` provides a run environment with all locally installed modules in the
 `PATH` var. So if you hate typing, you can install the programm globally (`-g`).
 
-### 1. Snippets / Examples (only for visulization)
+### 1. Snippets / Examples (only for visualization)
 
 Allows you to write minimal example [snippets](https://github.com/biojs/biojs-sniper) of your visualization.
 These snippets will be used for the [BioJS registry](http://biojs.io) and each snippet can visualize for one specific use case of your component (e.g. adjusting the menubar or changing default color). Those snippets can later be easily edited in a web editor like JSBin and thus should be minimal. A rule of thumb maximum for a snippet is 10 lines (otherwise your component is probably really hard to use).
