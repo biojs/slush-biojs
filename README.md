@@ -58,7 +58,7 @@ and open [http://localhost:9090/examples](http://localhost:9090/examples)
 
 Executed command: `biojs-sniper`
 
-### 2. Watchify (only for visuliazation)
+### 2. Watchify (only for visualization)
 
 Watches all your files and runs [browserify](http://browserify.org) on every change.
 Combine this with the sniper.
