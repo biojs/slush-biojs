@@ -95,7 +95,7 @@ If you want to auto-execute all your test on a file change, run:
 npm run test-watch
 ~~~
 
-### 4. CSS (optional + only for visuliazation)
+### 4. CSS (optional + only for visualization)
 
 The will run `parcelify` and bundle all your CSS resources.
 
