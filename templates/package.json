@@ -15,8 +15,7 @@
     "url": "https://github.com/<%= userName %>/<%= appNameSlug %>/issues"
   },
   "license": "<%= license %>",
-  "main": "lib/index.js",<% if (css){ %>
-  "style": "css/*.css", <% } %>
+  "main": "lib/index.js",
   "scripts": {
 <%= scripts %>
   },
