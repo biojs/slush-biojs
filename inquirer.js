@@ -147,7 +147,7 @@ inq.ask = function ask(prompts, cb) {
           if (file.basename[0] === '_') {
             file.basename = '.' + file.basename.slice(1);
           }
-          // we don't need special test folders if there is no phantomjs 
+          // we don't need special test folders if there is no phantomjs
           if (answers.tests && !answers.phantomjs) {
             if (file.dirname.substring(0, 9) === "test/unit") {
               file.dirname = file.dirname.replace("unit", "");
@@ -296,7 +296,7 @@ inq.getDevDependencies = function(a) {
 
   // default dependencies
   devDependencies["mkdirp"] = "^0.5.0";
-  devDependencies["browserify"] = "6.x";
+  devDependencies["browserify"] = "13.x";
 
   if (a.coverage) {
     devDependencies["blanket"] = "^1.1.6";
@@ -309,7 +309,7 @@ inq.getDevDependencies = function(a) {
 
   if (a.vis) {
     devDependencies["sniper"] = "0.x";
-    devDependencies["watchify"] = "^1.0.6";
+    devDependencies["watchify"] = "^3.7.0";
     devDependencies["prunner"] = "1.x";
   }
 
