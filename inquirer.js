@@ -295,8 +295,6 @@ inq.getDevDependencies = function(a) {
   var devDependencies = {};
 
   // default dependencies
-  devDependencies["mkdirp"] = "^0.5.0";
-  devDependencies["browserify"] = "6.x";
 
   if (a.coverage) {
     devDependencies["blanket"] = "^1.1.6";
