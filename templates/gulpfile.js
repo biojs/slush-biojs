@@ -10,6 +10,7 @@
 // browserify build config
 var buildDir = "build";
 var outputFile = "<%= appNameShort %>";
+var appNameSlug = "<%= appNameSlug %>";
 
 // packages
 var gulp   = require('gulp');
@@ -133,7 +134,7 @@ gulp.task('build-browser',['init'], function() {
 
 // browserify min
 gulp.task('build-browser-min',['init'], function() {
-  var b = browserify({hasExports: true, standalone: "<%= appNameSlug %>"});
+  var b = browserify({hasExports: true, standalone: appNameSlug});
   exposeBundles(b);
   return b.bundle()
     .pipe(source(outputFile + ".min.js"))
