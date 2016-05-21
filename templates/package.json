@@ -35,10 +35,15 @@
     }
   }, <% } %><% if(vis){ %>
   "sniper": {
+    <% if (!browserify){ %>"noBrowserify": true,<% } %>
     "js": [ "/build/<%= appNameShort %>.js"],<% if (css){ %>
     "css": ["/build/bundle.css"], <% } %>
     "snippets": ["examples"],
     "first": "simple"
-   }, <% } %>
+   }, <% } else { %>
+  "biojs": {
+    <% if (!browserify){ %>"noBrowserify": true,<% } %>
+    "js": [ "/build/<%= appNameShort %>.js"]
+  }, <% } %>
   "keywords": <%= keywordList %>
 }
