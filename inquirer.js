@@ -173,7 +173,7 @@ inq.ask = function ask(prompts, cb) {
           } else {
             prepub();
           }
-        })
+        });
     });
 };
 
