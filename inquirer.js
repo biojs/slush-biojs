@@ -160,7 +160,7 @@ inq.ask = function ask(prompts, cb) {
         .on('finish', function() {
           // do some cleanup on end
           var prepub = function() {
-            var spawn = require('child_process').spawn;
+            var spawn = require('cross-spawn');
             var proc = spawn('npm', ['install']);
             proc.stdout.pipe(process.stdout);
             proc.stderr.pipe(process.stderr);
