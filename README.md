@@ -1,3 +1,16 @@
+
+# Deprecated
+
+This repository is out of date. We recommend using [our WebComponent generator](https://github.com/biojs/generator-biojs-webcomponents) instead. 
+
+=====================
+
+
+=====================
+
+
+=====================
+
 # Slush BioJS 
 
 [![NPM version][npm-image]][npm-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Dev. Dependency Status][daviddm-dev-image]][daviddm-dev-url]
