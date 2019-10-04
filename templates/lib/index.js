@@ -26,7 +26,7 @@ module.exports = <%= appNameVar %> = function(opts){
  */
 
 /**
- * Method responsible to say Hello
+ * Method responsible for saying Hello
  *
  * @example
  *
