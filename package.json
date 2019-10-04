@@ -30,6 +30,7 @@
     "gulp-conflict": "^0.4.0",
     "gulp-rename": "~1.2.0",
     "gulp-template": "~3.0.0",
+    "cross-spawn":"5.0.0",
     "inquirer": "^0.11.0",
     "rc": "^1.1.5",
     "underscore": "^1.7.0",
