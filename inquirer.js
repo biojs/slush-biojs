@@ -14,7 +14,8 @@ var inq = {};
 module.exports = inq;
 
 inq.ask = function ask(prompts, cb) {
-  inquirer.prompt(prompts,
+  inquirer.prompt(prompts)
+  .then(
     function(answers) {
       if (!answers.appName) {
         // empty space so that everyone can see this error msg
@@ -147,7 +148,7 @@ inq.ask = function ask(prompts, cb) {
           if (file.basename[0] === '_') {
             file.basename = '.' + file.basename.slice(1);
           }
-          // we don't need special test folders if there is no phantomjs 
+          // we don't need special test folders if there is no phantomjs
           if (answers.tests && !answers.phantomjs) {
             if (file.dirname.substring(0, 9) === "test/unit") {
               file.dirname = file.dirname.replace("unit", "");
@@ -162,6 +163,7 @@ inq.ask = function ask(prompts, cb) {
           var prepub = function() {
             var spawn = require('child_process').spawn;
             var proc = spawn('npm', ['install']);
+            //var proc = spawn('ls', ['-l']);
             proc.stdout.pipe(process.stdout);
             proc.stderr.pipe(process.stderr);
             proc.on("close", function(){
@@ -174,7 +176,8 @@ inq.ask = function ask(prompts, cb) {
             prepub();
           }
         })
-    });
+    }
+  );
 };
 
 inq.showHelp = function(answers) {

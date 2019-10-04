@@ -19,6 +19,7 @@ module.exports.getPrompts = function(prev, opts){
     gulp: false,
     phantomjs: false,
     vis: true,
+    browserify: false,
     testsNonVis: true,
     testsVisComponents: false,
     css: false,
@@ -75,6 +76,14 @@ module.exports.getPrompts = function(prev, opts){
       default: function() {
         if( prev.vis !== undefined) return prev.vis;
         return conf.vis;
+      }
+    }, {
+      name: 'browserify',
+      type: "confirm",
+      message: 'Are you going to use browserify?',
+      default: function() {
+        if( prev.browserify !== undefined) return prev.browserify;
+        return conf.browserify;
       }
     }, {
       name: 'tests',
